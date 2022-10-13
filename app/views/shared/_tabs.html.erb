@@ -1,0 +1,30 @@
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" style='width:200px'>
+    <a class="nav-link active" aria-current="page" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#lot" type="button" role="tab" aria-controls="lot" aria-selected="true">
+      <% case params['action'] %>
+      <% when 'buy' %>
+        <%= 'Nouveau Lot' %>
+      <% when 'quality' %>
+        <%= 'Lots en cours' %>
+      <% when 'sale' %>
+        <%= 'Commandes clients' %>
+      <% when 'transport' %>
+        <%= 'Transports en cours' %>
+      <% end %>
+    </a>
+  </li>
+  <li class="nav-item" style='width:200px'>
+    <a class="nav-link" aria-current="page" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#lot" type="button" role="tab" aria-controls="lot" aria-selected="false">
+      <% case params['action'] %>
+      <% when 'buy' %>
+        <%= 'Lots' %>
+      <% when 'quality' %>
+        <%= 'Lots' %>
+      <% when 'sale' %>
+        <%= 'Refus' %>
+      <% when 'transport' %>
+        <%= 'Transports chargés' %>
+      <% end %>
+    </a>
+  </li>
+</ul>

@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  background: #D6EFED;
+  border-top: 2px solid $second-color !important;
   .appear-link{
     display: none;
     opacity: 0;
@@ -9,16 +11,16 @@
     font-size: 12px;
   }
   .side-link{
-    color: $orange;
+    color: $second-color;
     display: flex;
     flex-direction: column;
     a{
       text-decoration: none;
-      color: $orange;
+      color: $second-color;
     }
   }
   .side-link:hover {
-    border-right: 4px solid $orange;
+    border-right: 4px solid $second-color;
   }
 
   .side-link:hover .appear-link{
@@ -27,7 +29,7 @@
   }
 
   .active {
-    border-right: 4px solid $orange;
+    border-right: 4px solid $second-color;
     .appear-link {
       display: inline-block;
       opacity:1;

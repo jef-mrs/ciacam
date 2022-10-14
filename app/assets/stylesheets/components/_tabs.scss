@@ -1,0 +1,25 @@
+.tabs {
+  background: #D6EFED;
+  a {
+    color: black !important;
+  }
+
+  .nav-link,
+  .no-use-link  {
+    border-top: 2px solid $second-color;
+  }
+  .active,
+  .nav-link:hover {
+    background: $blue !important;
+    color: $second-color !important;
+    border: 2px solid $second-color !important;
+    border-top: none !important;
+    border-radius: 0 0 8px 8px  !important;
+  }
+
+  .no-use-link:hover {
+    background: #D6EFED !important;
+    border: none !important;
+    border-top: 2px solid $second-color !important;
+  }
+}

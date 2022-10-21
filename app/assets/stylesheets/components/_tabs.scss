@@ -1,14 +1,21 @@
 .tabs {
+  background: white !important;
+  border-bottom: none !important;
   a {
     color: black !important;
+  }
+
+  .nav-link,
+  .no-use-tabs {
+    border-bottom: 1px solid $second-color !important;
   }
 
   .active,
   .nav-link:hover {
     color: $second-color !important;
-    background: white !important;
+    background: $light-gray !important;
     border: 1px solid $second-color !important;
-    // border-bottom: none !important;
+    border-bottom: 1px solid $light-gray!important;
     border-top: none !important;
     font-weight: normal !important;
   }

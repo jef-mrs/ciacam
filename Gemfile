@@ -32,6 +32,8 @@ gem 'devise'
 
 gem 'pundit'
 
+gem 'cloudinary', '~> 1.16.0'
+
 # Calender
 gem "simple_calendar", "~> 2.4"
 

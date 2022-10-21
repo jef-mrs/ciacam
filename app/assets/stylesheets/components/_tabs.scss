@@ -1,21 +1,15 @@
 .tabs {
-  background: #D6EFED;
   a {
     color: black !important;
   }
 
   .active,
   .nav-link:hover {
-    background: #D6EFED;
     color: $second-color !important;
+    background: white !important;
     border: 1px solid $second-color !important;
+    // border-bottom: none !important;
     border-top: none !important;
-    border-radius: 0 0 8px 8px  !important;
     font-weight: normal !important;
-    box-shadow: 15 10 15 rgba(0, 0, 0, 0.1);
-  }
-
-  .no-use-link:hover {
-    background: #D6EFED !important;
   }
 }

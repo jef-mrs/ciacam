@@ -4,22 +4,18 @@
     color: black !important;
   }
 
-  .nav-link,
-  .no-use-link  {
-    border-top: 2px solid $second-color;
-  }
   .active,
   .nav-link:hover {
-    background: $blue !important;
+    background: #D6EFED;
     color: $second-color !important;
-    border: 2px solid $second-color !important;
+    border: 1px solid $second-color !important;
     border-top: none !important;
     border-radius: 0 0 8px 8px  !important;
+    font-weight: normal !important;
+    box-shadow: 15 10 15 rgba(0, 0, 0, 0.1);
   }
 
   .no-use-link:hover {
     background: #D6EFED !important;
-    border: none !important;
-    border-top: 2px solid $second-color !important;
   }
 }

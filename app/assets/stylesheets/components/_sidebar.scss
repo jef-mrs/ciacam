@@ -3,36 +3,28 @@
   flex-direction: column;
   justify-content: space-around;
   background: #D6EFED;
-  border-top: 2px solid $second-color !important;
   .appear-link{
-    display: none;
+    display: inline-block;
     opacity: 0;
-    transition: ease 5s;
+    transition: ease 1.4s;
     font-size: 12px;
   }
   .side-link{
     color: $second-color;
-    display: flex;
-    flex-direction: column;
+
     a{
       text-decoration: none;
       color: $second-color;
     }
   }
-  .side-link:hover {
-    border-right: 4px solid $second-color;
-  }
-
-  .side-link:hover .appear-link{
-    display: inline-block;
-    opacity:1;
-  }
-
+  .side-link:hover,
   .active {
     border-right: 4px solid $second-color;
-    .appear-link {
-      display: inline-block;
+    .appear-link{
       opacity:1;
+      padding: 5px;
     }
   }
 }
+
+

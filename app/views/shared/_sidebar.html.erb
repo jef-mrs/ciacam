@@ -1,23 +1,22 @@
-<div class='sidebar text-center border border-top-0 border-start-0 border-bottom-0' style="width:90px; " >
-    <div class="side-link p-1 <%= "active" if params["action"] == "buy" %>" >
+<div class='sidebar text-center border border-top-0 border-start-0 border-bottom-0' style="width:15vh; " >
+    <div class="side-link text-start py-1 ms-2 <%= "active" if params["action"] == "buy" %>" >
       <%= link_to buy_path do %>
         <i class="fa-solid fa-basket-shopping" style="font-size:18px"></i><span class="appear-link ms-2"> ACHAT </span>
       <% end %>
     </div>
-    <div class="side-link p-1 <%= "active" if params["action"] == "quality" %>">
+    <div class="side-link text-start py-1 ms-2 <%= "active" if params["action"] == "quality" %>">
       <%= link_to quality_path do %>
         <i class="fa-solid fa-vial-circle-check" style=" font-size:18px"></i><span class="appear-link ms-2"> QUALITE </span>
       <% end %>
     </div>
-    <div class="side-link p-1 <%= "active" if params["action"] == "sale" %>" >
+    <div class="side-link text-start py-1 ms-2 <%= "active" if params["action"] == "sale" %>" >
       <%= link_to sale_path do %>
         <i class="fa-solid fa-cash-register" style="font-size:18px"></i><span class="appear-link ms-2"> VENTE </span>
       <% end %>
     </div>
-    <div class="side-link p-1 <%= "active" if params["action"] == "transport" %>">
+    <div class="side-link text-start py-1 ms-2 <%= "active" if params["action"] == "transport" %>">
       <%= link_to transport_path do %>
         <i class="fa-solid fa-truck" style="font-size:18px"></i><span class="appear-link ms-2"> FRET </span>
       <% end %>
     </div>
 </div>
-<%#  mb-5 p-1 %>

@@ -1,33 +1,56 @@
 <div class="tabs">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <% case params['action'] %>
+  <% when 'buy' %>
     <li class="nav-item" style='width:200px'>
       <a class="nav-link active" aria-current="page" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#lot" type="button" role="tab" aria-controls="lot" aria-selected="true">
-        <% case params['action'] %>
-        <% when 'buy' %>
-          <%= 'Nouveau Lot' %>
-        <% when 'quality' %>
-          <%= 'Lots en cours' %>
-        <% when 'sale' %>
-          <%= 'Commandes clients' %>
-        <% when 'transport' %>
-          <%= 'Transports en cours' %>
-        <% end %>
+        <%= 'Nouveau Lot' %>
       </a>
     </li>
     <li class="nav-item" style='width:200px'>
       <a class="nav-link" aria-current="page" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#lot" type="button" role="tab" aria-controls="lot" aria-selected="false">
-        <% case params['action'] %>
-        <% when 'buy' %>
-          <%= 'Lots' %>
-        <% when 'quality' %>
-          <%= 'Lots' %>
-        <% when 'sale' %>
-          <%= 'Refus' %>
-        <% when 'transport' %>
-          <%= 'Transports chargés' %>
-        <% end %>
+        <%= 'Lots reçus' %>
       </a>
     </li>
+   <% when 'quality' %>
+    <li class="nav-item" style='width:200px'>
+      <a class="nav-link active" aria-current="page" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#lot" type="button" role="tab" aria-controls="lot" aria-selected="true">
+        <%= 'Lots reçus' %>
+      </a>
+    </li>
+    <li class="nav-item" style='width:200px'>
+      <a class="nav-link" aria-current="page" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#lot" type="button" role="tab" aria-controls="lot" aria-selected="false">
+        <%= 'Lots conditionnés' %>
+      </a>
+    </li>
+    <li class="nav-item" style='width:200px'>
+      <a class="nav-link" aria-current="page" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#lot" type="button" role="tab" aria-controls="lot" aria-selected="false">
+         <%= 'Echantillons envoyés' %>
+      </a>
+    </li>
+   <% when 'sale' %>
+    <li class="nav-item" style='width:200px'>
+      <a class="nav-link active" aria-current="page" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#lot" type="button" role="tab" aria-controls="lot" aria-selected="true">
+        <%= 'Commandes clients' %>
+      </a>
+    </li>
+    <li class="nav-item" style='width:200px'>
+      <a class="nav-link" aria-current="page" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#lot" type="button" role="tab" aria-controls="lot" aria-selected="false">
+        <%= 'Refus' %>
+      </a>
+    </li>
+       <% when 'transport' %>
+    <li class="nav-item" style='width:200px'>
+      <a class="nav-link active" aria-current="page" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#lot" type="button" role="tab" aria-controls="lot" aria-selected="true">
+        <%= 'Transports en cours' %>
+      </a>
+    </li>
+    <li class="nav-item" style='width:200px'>
+      <a class="nav-link" aria-current="page" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#lot" type="button" role="tab" aria-controls="lot" aria-selected="false">
+        <%= 'Transports chargés' %>
+      </a>
+    </li>
+    <% end %>
     <li class="flex-grow-1 no-use-link"></li>
   </ul>
 </div>

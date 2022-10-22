@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_21_123557) do
+ActiveRecord::Schema.define(version: 2022_10_22_151344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,41 @@ ActiveRecord::Schema.define(version: 2022_10_21_123557) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "batches", force: :cascade do |t|
+    t.integer "number"
+    t.integer "quantity"
+    t.integer "transportation"
+    t.bigint "supplier_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_batches_on_product_id"
+    t.index ["supplier_id"], name: "index_batches_on_supplier_id"
+  end
+
+  create_table "loading_places", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "contact"
+    t.bigint "supplier_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["supplier_id"], name: "index_loading_places_on_supplier_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "suppliers", force: :cascade do |t|
+    t.string "name"
+    t.string "contact"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -57,4 +92,7 @@ ActiveRecord::Schema.define(version: 2022_10_21_123557) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "batches", "products"
+  add_foreign_key "batches", "suppliers"
+  add_foreign_key "loading_places", "suppliers"
 end

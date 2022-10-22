@@ -3,13 +3,18 @@
   <% case params['action'] %>
   <% when 'buy' %>
     <li class="nav-item" style='width:200px'>
+      <a class="nav-link" aria-current="page" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#lot" type="button" role="tab" aria-controls="lot" aria-selected="false">
+        <%= 'Lots' %>
+      </a>
+    </li>
+    <li class="nav-item" style='width:200px'>
       <a class="nav-link active" aria-current="page" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#lot" type="button" role="tab" aria-controls="lot" aria-selected="true">
-        <%= 'Nouveau Lot' %>
+        <%= 'Fournisseurs' %>
       </a>
     </li>
     <li class="nav-item" style='width:200px'>
       <a class="nav-link" aria-current="page" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#lot" type="button" role="tab" aria-controls="lot" aria-selected="false">
-        <%= 'Lots reçus' %>
+        <%= 'Produits' %>
       </a>
     </li>
    <% when 'quality' %>

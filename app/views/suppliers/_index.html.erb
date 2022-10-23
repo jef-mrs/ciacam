@@ -1,0 +1,9 @@
+<h1>Hello</h1>
+
+<% if suppliers.count > 0 %>
+  <% suppliers.each do |supplier| %>
+    <h2><%= supplier.name %></h2>
+  <% end %>
+<% else %>
+  <h1>Vous n'avez pas de fournisseurs</h1>
+<% end %>

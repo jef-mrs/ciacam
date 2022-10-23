@@ -1,0 +1,9 @@
+<h1>Hello</h1>
+
+<% if products.count > 0 %>
+  <% products.each do |product| %>
+    <h2><%= product.name %></h2>
+  <% end %>
+<% else %>
+  <h1>Vous n'avez pas de produits</h1>
+<% end %>

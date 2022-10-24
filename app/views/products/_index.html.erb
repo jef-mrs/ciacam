@@ -7,7 +7,7 @@
                       create_target: "form",
                       action: "submit->create#send"
                       }) do |f| %>
-          <%= f.input :name, label: false, input_html: {placeholder: 'nom du produit'} %>
+          <%= f.input :name, label: false, input_html: {placeholder: 'nom du produit', data: { create_target: 'input'}}  %>
           <%= f.button :submit, class: 'btn btn-outline-primary', data: {
                                                                     disable_with: false
                                                                   } %>
@@ -16,7 +16,8 @@
     </div>
     <div class="row mt-4">
       <% if products.count > 0 %>
-        <div data-create-target='insert'></div>
+        <div data-create-target='insert'>
+        </div>
         <% products.each do |product| %>
           <h2><%= product.name %></h2>
         <% end %>

@@ -3,7 +3,7 @@ import { csrfToken } from "@rails/ujs"
 
 export default class extends Controller {
 
-  static targets = [ "form", "insert", "index"]
+  static targets = [ "form", "insert", "index", "input"]
 
 
   // connect() {
@@ -20,14 +20,15 @@ export default class extends Controller {
     })
       .then(response => response.json())
       .then((data) => {
-        if (data.inserted_item) {
-          this.insertTarget.innerHTML =""
-          this.insertTarget.insertAdjacentHTML("beforeend", data.inserted_item)
-        } else {
-          this.indexTarget.outerHTML = data.index
+        if (data.error) {
+          // this.insertTarget.outerHTML = ""
           this.insertTarget.insertAdjacentHTML("beforeend", data.error)
-          console.log(data.error)
+        } else {
+          this.insertTarget.insertAdjacentHTML("afterbegin", data.inserted_item)
+          // this.indexTarget.outerHTML = data.index
         }
-      })
+        this.inputTarget.value = ""
+        }
+      )
   }
 }

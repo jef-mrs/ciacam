@@ -1,20 +1,19 @@
 class SuppliersController < ApplicationController
   def index
     @suppliers = policy_scope(Supplier)
-
     respond_to do |format|
       format.html { render 'pages/buy' }
-      format.json # Follow the classic Rails flow and look for a create.json view
+      format.json # Follow the classic Rails flow and look for a index.json view
     end
   end
 
   def create
-    @supplier = Supplier.new(supplier_params)
+    @supplies = policy_scope(Supplier)
+    @supplier = Supplier.create(supplier_params)
     authorize @supplier
-    if @supplier.save
-      flash.notice = 'Fournissuer bien enregistré'
-    else
-      flash.alert = "Problème lors de l'enregistrement veuillez recomencer"
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      format.json # Follow the classic Rails flow and look for a create.json view
     end
   end
 

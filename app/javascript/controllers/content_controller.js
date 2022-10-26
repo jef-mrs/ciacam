@@ -26,7 +26,7 @@ export default class extends Controller {
 
   batch(event) {
     event.preventDefault()
-
+    console.log(this.batchTarget)
     fetch(this.batchTarget, {
       headers: { "Accept": "application/json", "X-CSRF-Token": csrfToken() }
     })

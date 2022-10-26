@@ -2,13 +2,15 @@
   <div class="container">
     <div class="row">
       <div class="col-3">
-        <%= simple_form_for(supplier,
+        <%= simple_form_for(batch,
                     data: {
                       create_target: "form",
                       action: "submit->create#send"
                       }) do |f| %>
-          <%= f.input :name, label: false, input_html: {placeholder: 'nom du fournisseur', data: { create_target: 'input'}}  %>
-          <%= f.input :contact, label: false, input_html: {placeholder: 'nom du contact', data: { create_target: 'input'}}  %>
+          <%= f.input :number, label: false, input_html: {placeholder: 'Numero de lot', data: { create_target: 'input'}}  %>
+          <%= f.input :quantity, label: false, input_html: {placeholder: 'Quantité en tonne', data: { create_target: 'input'}}  %>
+          <%= f.input :supplier_id, collection: Supplier.all, label: false, input_html: {placeholder: 'Fournisseur', data: { create_target: 'input'}} %>
+          <%= f.input :product_id, collection: Product.all, label: false, input_html: {placeholder: 'Produit', data: { create_target: 'input'}} %>
           <%= f.button :submit, class: 'btn btn-outline-primary', data: {
                                                                     disable_with: false
                                                                   } %>
@@ -16,14 +18,14 @@
       </div>
     </div>
     <div class="row mt-4">
-      <% if suppliers.count > 0 %>
+      <% if batchs.count > 0 %>
         <div data-create-target='insert'>
         </div>
-        <% suppliers.each do |supplier| %>
-          <h2><%= supplier.name %></h2>
+        <% batchs.each do |batch| %>
+          <h2><%= batch.number %></h2>
         <% end %>
       <% else %>
-        <h1>Vous n'avez pas de foruniseurs</h1>
+        <h1>Vous n'avez pas de lots</h1>
       <% end %>
     </div>
   </div>

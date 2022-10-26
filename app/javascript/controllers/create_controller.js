@@ -12,7 +12,6 @@ export default class extends Controller {
 
   send(event) {
     event.preventDefault()
-
     fetch(this.formTarget.action, {
       method: "POST",
       headers: { "Accept": "application/json", "X-CSRF-Token": csrfToken() },
@@ -20,14 +19,13 @@ export default class extends Controller {
     })
       .then(response => response.json())
       .then((data) => {
+        this.insertTarget.innerHTML = ""
         if (data.error) {
-          // this.insertTarget.outerHTML = ""
-          this.insertTarget.insertAdjacentHTML("beforeend", data.error)
+          this.insertTarget.innerHTML = data.error
         } else {
-          this.insertTarget.insertAdjacentHTML("afterbegin", data.inserted_item)
-          // this.indexTarget.outerHTML = data.index
+          this.insertTarget.innerHTML =data.inserted_item
         }
-        this.inputTarget.value = ""
+        this.inputTargets.forEach( (e) => e.value = "")
         }
       )
   }

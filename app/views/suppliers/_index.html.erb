@@ -1,0 +1,30 @@
+<div class="m-4"data-controller="create" data-create-target="index" >
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <%= simple_form_for(supplier,
+                    data: {
+                      create_target: "form",
+                      action: "submit->create#send"
+                      }) do |f| %>
+          <%= f.input :name, label: false, input_html: {placeholder: 'nom du fournisseur', data: { create_target: 'input'}}  %>
+          <%= f.input :contact, label: false, input_html: {placeholder: 'nom du contact', data: { create_target: 'input'}}  %>
+          <%= f.button :submit, class: 'btn btn-outline-primary', data: {
+                                                                    disable_with: false
+                                                                  } %>
+        <% end %>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <% if suppliers.count > 0 %>
+        <div data-create-target='insert'>
+        </div>
+        <% suppliers.each do |supplier| %>
+          <h2><%= supplier.name %></h2>
+        <% end %>
+      <% else %>
+        <h1>Vous n'avez pas de foruniseurs</h1>
+      <% end %>
+    </div>
+  </div>
+</div>

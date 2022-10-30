@@ -3,7 +3,7 @@ import { csrfToken } from "@rails/ujs"
 
 export default class extends Controller {
 
-  static targets = [ "insert", "supplier", "batch", "product" ]
+  static targets = [ "insert", "supplier", "batch", "product", "insertCard" ]
 
 
   connect() {
@@ -20,13 +20,15 @@ export default class extends Controller {
         if (data.index) {
           this.insertTarget.innerHTML =""
           this.insertTarget.insertAdjacentHTML("beforeend", data.index)
+          this.insertCardTarget.innerHTML =""
+          this.insertCardTarget.insertAdjacentHTML("beforeend", data.card)
         }
       })
   }
 
   batch(event) {
     event.preventDefault()
-    console.log(this.batchTarget)
+
     fetch(this.batchTarget, {
       headers: { "Accept": "application/json", "X-CSRF-Token": csrfToken() }
     })
@@ -35,6 +37,8 @@ export default class extends Controller {
         if (data.index) {
           this.insertTarget.innerHTML =""
           this.insertTarget.insertAdjacentHTML("beforeend", data.index)
+          this.insertCardTarget.innerHTML =""
+          this.insertCardTarget.insertAdjacentHTML("beforeend", data.card)
         }
       })
   }
@@ -50,6 +54,8 @@ export default class extends Controller {
         if (data.index) {
           this.insertTarget.innerHTML =""
           this.insertTarget.insertAdjacentHTML("beforeend", data.index)
+          this.insertCardTarget.innerHTML =""
+          this.insertCardTarget.insertAdjacentHTML("beforeend", data.card)
         }
       })
   }

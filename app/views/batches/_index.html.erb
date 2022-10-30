@@ -1,32 +1,44 @@
 <div class="m-4"data-controller="create" data-create-target="index" >
   <div class="container">
     <div class="row">
-      <div class="col-3">
-        <%= simple_form_for(batch,
-                    data: {
-                      create_target: "form",
-                      action: "submit->create#send"
-                      }) do |f| %>
-          <%= f.input :number, label: false, input_html: {placeholder: 'Numero de lot', data: { create_target: 'input'}}  %>
-          <%= f.input :quantity, label: false, input_html: {placeholder: 'Quantité en tonne', data: { create_target: 'input'}}  %>
-          <%= f.input :supplier_id, collection: Supplier.all, label: false, input_html: {placeholder: 'Fournisseur', data: { create_target: 'input'}} %>
-          <%= f.input :product_id, collection: Product.all, label: false, input_html: {placeholder: 'Produit', data: { create_target: 'input'}} %>
-          <%= f.button :submit, class: 'btn btn-outline-primary', data: {
-                                                                    disable_with: false
-                                                                  } %>
-        <% end %>
-      </div>
-    </div>
-    <div class="row mt-4">
-      <% if batchs.count > 0 %>
-        <div data-create-target='insert'>
+
+<!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal" style="width:350px;">
+        <i class="fa-sharp fa-solid fa-plus"></i> Ajouter un nouveau lot
+      </button>
+
+<!-- Modal -->
+      <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Nouveau lot</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="col-8 m-3">
+
+
+              <%= simple_form_for(batch,
+                          data: {
+                            create_target: "form",
+                            action: "submit->create#send"
+                            }) do |f| %>
+                <%= f.input :number, label: false, input_html: {placeholder: 'Numero de lot', data: { create_target: 'input'}}  %>
+                <%= f.input :quantity, label: false, input_html: {placeholder: 'Quantité en tonne', data: { create_target: 'input'}}  %>
+                <%= f.input :supplier_id, collection: Supplier.all, label: false, input_html: {placeholder: 'Fournisseur', data: { create_target: 'input'}} %>
+                <%= f.input :product_id, collection: Product.all, label: false, input_html: {placeholder: 'Produit', data: { create_target: 'input'}} %>
+                <%= f.button :submit, class: 'btn btn-outline-primary', data: {
+                                                                          disable_with: false,
+                                                                          bs_dismiss:'modal'
+                                                                        } %>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <% end %>
+
+            </div>
+          </div>
         </div>
-        <% batchs.each do |batch| %>
-          <h2><%= batch.number %></h2>
-        <% end %>
-      <% else %>
-        <h1>Vous n'avez pas de lots</h1>
-      <% end %>
-    </div>
+      </div>
+    <div data-create-target='insert'></div>
+    <div data-content-target="insertCard"></div>
   </div>
 </div>

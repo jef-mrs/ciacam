@@ -6,9 +6,9 @@ export default class extends Controller {
   static targets = [ "form", "insert", "index", "input"]
 
 
-  // connect() {
-  //   console.log(this.formTarget.action)
-  // }
+  connect() {
+    // console.log(this.formTarget.action)
+  }
 
   send(event) {
     event.preventDefault()

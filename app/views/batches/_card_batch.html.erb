@@ -4,7 +4,9 @@
       <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
       <div class="card-product-infos">
         <h2><%= batch.number %></h2>
-        <p>Product description with <strong>relevant info</strong> only.</p>
+        <p><%= batch.supplier.name %></p>
+        <p><%= batch.product.name %></p>
+        <p><%= batch.quantity %></p>
       </div>
     </div>
   <% end %>

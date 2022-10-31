@@ -7,7 +7,7 @@ export default class extends Controller {
 
 
   connect() {
-    // console.log(this.formTarget.action)
+    console.log(this.formTarget.action)
   }
 
   send(event) {
@@ -25,7 +25,6 @@ export default class extends Controller {
         } else {
           this.insertTarget.innerHTML = data.inserted_item
         }
-        this.inputTargets.forEach( (e) => e.value = "")
         }
       )
   }

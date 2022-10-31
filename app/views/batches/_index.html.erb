@@ -27,7 +27,7 @@
                 <%= f.input :quantity, label: false, input_html: {placeholder: 'Quantité en tonne', data: { create_target: 'input'}}  %>
                 <%= f.input :supplier_id, collection: Supplier.all, label: false, input_html: {placeholder: 'Fournisseur', data: { create_target: 'input'}} %>
                 <%= f.input :product_id, collection: Product.all, label: false, input_html: {placeholder: 'Produit', data: { create_target: 'input'}} %>
-                <%= f.button :submit, class: 'btn btn-outline-primary', data: {
+                <%= f.button :submit, 'Créer', class: 'btn btn-outline-primary', data: {
                                                                           disable_with: false,
                                                                           bs_dismiss:'modal'
                                                                         } %>

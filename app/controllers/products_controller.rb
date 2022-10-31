@@ -17,9 +17,29 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+    @product = Product.find(params[:id])
+    authorize @product
+    respond_to do |format|
+      format.html { render 'pages/buy' }
+      format.json # Follow the classic Rails flow and look for a edit.json view
+    end
+  end
+
+  def update
+    @products = policy_scope(Product)
+    @product = Product.find(params[:id])
+    @product.update(product_params)
+    authorize @product
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      format.json # Follow the classic Rails flow and look for a update.json view
+    end
+  end
+
   private
 
   def product_params
-    params.require(:product).permit(:name)
+    params.require(:product).permit(:name, :photo)
   end
 end

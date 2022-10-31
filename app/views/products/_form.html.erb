@@ -1,0 +1,14 @@
+<div class="p-3">
+  <%= simple_form_for(product,
+                      data: {
+                      update_target: "form",
+                      action: "submit->update#send"
+                      }) do |f| %>
+    <%= f.input :name, label: false, input_html: {placeholder: 'nom du produit', data: { update_target: 'input'}, style: 'width: 300px'}  %>
+    <%= f.input :photo, as: :file,label: false, input_html: {placeholder: 'Photo', style: 'width: 300px'} %>
+    <%= f.button :submit, class: 'btn btn-outline-primary', data: {
+                                                                disable_with: false
+                                                                } %>
+
+  <% end %>
+</div>

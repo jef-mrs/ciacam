@@ -1,0 +1,5 @@
+if @product.persisted?
+  json.inserted_item json.partial!("products/new_product.html.erb", product: @product)
+else
+  json.error json.partial!("products/error.html.erb")
+end

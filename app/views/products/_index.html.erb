@@ -22,6 +22,7 @@
                                             action: "submit->create#send"
                                             }) do |f| %>
                 <%= f.input :name, label: false, input_html: {placeholder: 'nom du produit', data: { create_target: 'input'}}  %>
+                <%= f.input :photo, as: :file %>
                 <%= f.button :submit, class: 'btn btn-outline-primary', data: {
                                                                               disable_with: false,
                                                                               bs_dismiss: 'modal'

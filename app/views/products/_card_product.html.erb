@@ -1,6 +1,6 @@
 <% if products.count > 0 %>
   <% products.each do |product| %>
-    <div data-controller="info" style='background:white'>
+    <div data-controller="info" >
       <div class="card-product mt-5">
         <% if product.photo.attached? %>
           <%= cl_image_tag product.photo.key, height: 300, width: 400, crop: :fill %>
@@ -20,7 +20,7 @@
           <% end %>
         </div>
       </div>
-      <div data-info-target='insert'></div>
+      <div data-info-target='insert' style='background:white'></div>
     </div>
   <% end %>
 <% else %>

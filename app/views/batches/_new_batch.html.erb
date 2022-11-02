@@ -5,10 +5,21 @@
 </div>
 
 
- <div class="card-product mt-3">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-  <div class="card-product-infos">
+ <div class="card-product mt-5">
+    <% if batch.product.photo.attached? %>
+      <%= cl_image_tag batch.product.photo.key, height: 300, width: 400, crop: :fill %>
+    <% else %>
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+    <% end %>
     <h2><%= batch.number %></h2>
-    <p>Product description with <strong>relevant info</strong> only.</p>
+  <div class="card-product-infos">
+    <p><%= batch.supplier.name %></p>
+    <p><%= batch.product.name %></p>
+    <p><%= batch.quantity %></p>
+    <% if batch.transportation == 1 %>
+      <p> Route </p>
+    <% elsif batch.transportation == 2 %>
+      <p> Maritime </p>
+    <% end %>
   </div>
 </div>

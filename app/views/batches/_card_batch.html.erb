@@ -1,16 +1,34 @@
 <% if batchs.count > 0 %>
   <% batchs.each do |batch| %>
-    <div class="card-product mt-5">
+    <div data-controller='info' style='width:50%; background:white'>
+      <div class="card-product mt-5">
         <% if batch.product.photo.attached? %>
           <%= cl_image_tag batch.product.photo.key, height: 300, width: 400, crop: :fill %>
         <% else %>
           <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
         <% end %>
-      <div class="card-product-infos">
-        <h2><%= batch.number %></h2>
-        <p><%= batch.supplier.name %></p>
-        <p><%= batch.product.name %></p>
-        <p><%= batch.quantity %></p>
+        <h2 data-info-target='number' class='ms-2'><%= batch.number %></h2>
+        <div data-info-target='info' class="card-product-infos flex-grow-1">
+          <p><%= batch.supplier.name %></p>
+          <p><%= batch.product.name %></p>
+          <p><%= batch.quantity %></p>
+          <% if batch.transportation == 1 %>
+            <p> Route </p>
+          <% elsif batch.transportation == 2 %>
+            <p> Maritime </p>
+          <% end %>
+        </div>
+        <div class="card-product-edit " >
+            <%= link_to edit_batch_path(batch), class: 'me-4', data: {
+                                                  info_target: "model",
+                                                  action:"click->info#info"
+                                                },
+                                                style: 'text-decoration: none; color: black' do %>
+              <i class="fa-solid fa-pen-to-square"></i>
+            <% end %>
+          </div>
+        </div>
+        <div data-info-target='insert'></div>
       </div>
     </div>
   <% end %>

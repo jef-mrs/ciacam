@@ -1,14 +1,14 @@
 <div class="p-3 d-flex justify-content-between">
   <%= simple_form_for(product,
                       data: {
-                      info_target: "form",
+                        info_target: "form",
                       action: "submit->info#send"
                       }, html: { enctype:"multipart/form-data"}) do |f| %>
     <%= f.input :name, label: false, input_html: {placeholder: 'nom du produit', style: 'width: 300px'}  %>
     <%= f.input :photo, as: :file,label: 'Selectionner une photo', input_html: {style: 'width: 300px'}, wrapper_html: {class:'d-flex justify-content-around align-items-center'},
                                                                     label_html: {class: 'me-2'}%>
     <%= f.button :submit, 'Mettre à jour', class: 'btn btn-outline-primary', data: {
-                                                                disable_with: false
+      disable_with: false
                                                                 } %>
 
   <% end %>

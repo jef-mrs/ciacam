@@ -1,0 +1,10 @@
+      <div class="card-product-infos">
+        <p><%= batch.supplier.name %></p>
+        <p><%= batch.product.name %></p>
+        <p><%= batch.quantity %></p>
+        <% if batch.transportation == 1 %>
+          <p> Route </p>
+        <% elsif batch.transportation == 2 %>
+          <p> Maritime </p>
+        <% end %>
+      </div>

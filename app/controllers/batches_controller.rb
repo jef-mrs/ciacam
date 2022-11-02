@@ -18,6 +18,26 @@ class BatchesController < ApplicationController
     end
   end
 
+  def edit
+    @batch = Batch.find(params[:id])
+    authorize @batch
+    respond_to do |format|
+      format.html { render 'pages/buy' }
+      format.json # Follow the classic Rails flow and look for a edit.json view
+    end
+  end
+
+  def update
+    @batchs = policy_scope(Batch)
+    @batch = Batch.find(params[:id])
+    @batch.update(batch_params)
+    authorize @batch
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      format.json # Follow the classic Rails flow and look for a update.json view
+    end
+  end
+
   private
 
   def batch_params

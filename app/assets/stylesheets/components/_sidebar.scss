@@ -1,12 +1,16 @@
-.sidebar {
+.sidebar-log{
+  position: sticky !important;
+  top: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   background: #D6EFED;
+  min-height: calc(100vh - 120px);
+  max-height: 100vh;
   .side-tabs{
-    top: 0;
+    margin: 40px 0;
     width: 100%;
-    height: calc(100vh - 120px);
+
   }
   .appear-link{
     display: inline-block;

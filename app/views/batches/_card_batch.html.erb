@@ -1,6 +1,6 @@
 <% if batchs.count > 0 %>
   <% batchs.each do |batch| %>
-    <div data-controller='info' style='width:50%; background:white'>
+    <div data-controller='info' >
       <div class="card-product mt-5">
         <% if batch.product.photo.attached? %>
           <%= cl_image_tag batch.product.photo.key, height: 300, width: 400, crop: :fill %>
@@ -9,7 +9,7 @@
         <% end %>
         <h2 data-info-target='number' class='ms-2'><%= batch.number %></h2>
         <div data-info-target='info' class="card-product-infos flex-grow-1">
-          <p><%= batch.supplier.name %></p>
+          <p><strong><%= batch.supplier.name %></strong></p>
           <p><%= batch.product.name %></p>
           <p><%= batch.quantity %></p>
           <% if batch.transportation == 1 %>
@@ -28,7 +28,7 @@
             <% end %>
           </div>
         </div>
-        <div data-info-target='insert'></div>
+        <div data-info-target='insert' style='background:white'></div>
       </div>
     </div>
   <% end %>

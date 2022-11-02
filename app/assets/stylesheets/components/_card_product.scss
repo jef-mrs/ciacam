@@ -1,5 +1,10 @@
+.cards {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  gap: 16px;
+}
+
 .card-product {
-  width: 100%;
   overflow: hidden;
   height: 120px;
   background: white;

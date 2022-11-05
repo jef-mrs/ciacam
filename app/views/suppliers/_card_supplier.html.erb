@@ -7,18 +7,19 @@
           <h2><%= supplier.name %></h2>
         </div>
         <div class="card-product-edit" >
-              <%= link_to edit_supplier_path(supplier), class: 'me-4', data: {
-                                                    info_target: "model",
-                                                    action:"click->info#info"
-                                                  },
-                                                  style: 'text-decoration: none; color: black' do %>
-                <i class="fa-solid fa-pen-to-square"></i>
-              <% end %>
-            </div>
+          <div class='mb-1'>
+            <%= link_to edit_supplier_path(supplier), class: 'me-4', data: {
+                                                  info_target: "model",
+                                                  action:"click->info#info"
+                                                },
+                                                style: 'text-decoration: none; color: black' do %>
+              <i class="fa-solid fa-pen-to-square"></i>
+            <% end %>
           </div>
-          <div data-info-target='insert' style='background:white'></div>
+          <i class="fa-regular fa-file-lines"></i>
         </div>
       </div>
+      <div data-info-target='insert' style='background:white'></div>
     </div>
   <% end %>
 <% else %>

@@ -1,0 +1,17 @@
+<div class="p-3 d-flex justify-content-between">
+  <%= simple_form_for(supplier,
+                data: {
+                  info_target: "form",
+                  action: "submit->info#send"
+                  }) do |f| %>
+      <%= f.input :name, label: false, input_html: {placeholder: 'nom du fournisseur', data: { create_target: 'input'}}  %>
+      <%= f.input :contact, label: false, input_html: {placeholder: 'nom du contact', data: { create_target: 'input'}}  %>
+      <%= f.button :submit, 'Mettre à jour', class: 'btn btn-outline-primary', data: {
+                                                                disable_with: false,
+                                                                bs_dismiss: 'modal'
+                                                              } %>
+  <% end %>
+  <div data-action="click->info#close">
+    <i class="fa-solid fa-xmark"></i>
+  </div>
+</div>

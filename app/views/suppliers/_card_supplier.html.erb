@@ -1,11 +1,22 @@
 <% if suppliers.count > 0 %>
   <% suppliers.each do |supplier| %>
-    <div>
+    <div data-controller="info">
       <div class="card-product mt-5">
         <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-        <div class="card-product-infos">
+        <div data-info-target='info' class="card-product-infos flex-grow-1">
           <h2><%= supplier.name %></h2>
-          <p>Product description with <strong>relevant info</strong> only.</p>
+        </div>
+        <div class="card-product-edit" >
+              <%= link_to edit_supplier_path(supplier), class: 'me-4', data: {
+                                                    info_target: "model",
+                                                    action:"click->info#info"
+                                                  },
+                                                  style: 'text-decoration: none; color: black' do %>
+                <i class="fa-solid fa-pen-to-square"></i>
+              <% end %>
+            </div>
+          </div>
+          <div data-info-target='insert' style='background:white'></div>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 <% if suppliers.count > 0 %>
   <% suppliers.each do |supplier| %>
     <div data-controller="info">
-      <div class="card-product mt-5">
+      <div class="card-product mt-5" style="<%= 'border: 2px solid red' if supplier.documents.count.zero?%>" >
         <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
         <div data-info-target='info' class="card-product-infos flex-grow-1">
           <h2><%= supplier.name %></h2>

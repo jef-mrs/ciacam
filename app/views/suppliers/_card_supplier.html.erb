@@ -1,25 +1,47 @@
 <% if suppliers.count > 0 %>
   <% suppliers.each do |supplier| %>
     <div data-controller="info">
-      <div class="card-product mt-5" style="<%= 'border: 2px solid red' if supplier.documents.count.zero?%>" >
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-        <div data-info-target='info' class="card-product-infos flex-grow-1">
-          <h2><%= supplier.name %></h2>
-        </div>
-        <div class="card-product-edit" >
-          <div class='mb-1'>
-            <%= link_to edit_supplier_path(supplier), class: 'me-4', data: {
-                                                  info_target: "model",
-                                                  action:"click->info#info"
-                                                },
-                                                style: 'text-decoration: none; color: black' do %>
-              <i class="fa-solid fa-pen-to-square"></i>
-            <% end %>
+      <div data-controller="document" >
+        <div data-document-target="card">
+          <div class="card-product mt-5" >
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <div data-info-target='info' class="card-product-infos flex-grow-1">
+              <h2><%= supplier.name %></h2>
+            </div>
+            <div class="card-product-edit" >
+              <div class='mb-2'>
+                <%= link_to edit_supplier_path(supplier), class: 'me-4', data: {
+                                                      info_target: "model",
+                                                      action:"click->info#info"
+                                                    },
+                                                    style: 'text-decoration: none; color: black' do %>
+                  <i class="fa-solid fa-pen-to-square"></i>
+                <% end %>
+              </div>
+                <div class="mb-2">
+                <% if supplier.documents.count.positive? %>
+                  <%= link_to supplier_documents_path(supplier), class: 'me-4', data: {
+                                                  document_target: 'doc',
+                                                  action: 'click->document#info'
+                                                  },
+                                                  style: 'text-decoration: none; color: black' do  %>
+                    <i class="fa-regular fa-file-lines"></i>
+                  <% end %>
+                <% end %>
+                <div class="mb-2">
+                  <%= link_to new_supplier_document_path(supplier), class: 'me-4', data: {
+                                                document_target: 'new',
+                                                action: 'click->document#new'
+                                                }, style: 'text-decoration: none; color: black' do   %>
+                    <i class="fa-solid fa-folder-plus"></i>
+                  <% end %>
+                </div>
+              </div>
+            </div>
           </div>
-          <i class="fa-regular fa-file-lines"></i>
+          <div data-info-target='insert' data-document-target='insert' style='background:white'></div>
         </div>
       </div>
-      <div data-info-target='insert' style='background:white'></div>
     </div>
   <% end %>
 <% else %>

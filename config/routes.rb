@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :suppliers, only: %i[index create edit update] do
     resources :documents, only: %i[new index create]
+    resources :analyse_supp_docs, only: %i[create index]
   end
   resources :documents, only: :index
   resources :batches, only: %i[index create edit update]

@@ -6,4 +6,5 @@ class Document < ApplicationRecord
   validates :title, :file, presence: true
 
   SUPPLIER = ['Questionnaire', 'Contact de crise']
+  SUPPLIER_BIO = ['Questionnaire', 'Contact de crise', 'Certificatsv(GFSI, Bio)']
 end

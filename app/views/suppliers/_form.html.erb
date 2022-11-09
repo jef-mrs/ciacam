@@ -6,6 +6,7 @@
                   }) do |f| %>
       <%= f.input :name, label: false, input_html: {placeholder: 'nom du fournisseur', data: { create_target: 'input'}}  %>
       <%= f.input :contact, label: false, input_html: {placeholder: 'nom du contact', data: { create_target: 'input'}}  %>
+      <%= f.input :bio, as: :boolean, checked_value: true %>
       <%= f.button :submit, 'Mettre à jour', class: 'btn btn-outline-primary', data: {
                                                                 disable_with: false,
                                                                 bs_dismiss: 'modal'

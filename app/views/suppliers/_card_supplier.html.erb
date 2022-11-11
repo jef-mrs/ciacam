@@ -19,7 +19,7 @@
                 <% end %>
               </div>
                 <div class="mb-2">
-                <% if supplier.documents.count.positive? %>
+                <% if supplier.documents.count.positive? || supplier.analyse_supp_docs.count.positive? %>
                   <%= link_to supplier_documents_path(supplier), class: 'me-4', data: {
                                                   document_target: 'doc',
                                                   action: 'click->document#info'

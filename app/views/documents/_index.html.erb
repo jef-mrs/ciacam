@@ -13,6 +13,23 @@
     <% else %>
       <p>Il n'y a aucun document associé</p>
     <% end %>
+    <br>
+    <% if analyse_bios.count > 0 %>
+      <div>
+        <h4>Analyse bio</h4>
+        <% analyse_bios.each do |analyse| %>
+          <div>
+            <%= analyse.title %>
+            <% if  analyse.file.attached? %>
+              <%= link_to cloudinary_url(analyse.file.key, :flag=>"attachment"), download: "#{analyse.title} - #{analyse.supplier.name}", style: 'color:black; text-decoration:none', class: 'me-5' do %>
+                <i class="fa-solid fa-download"></i>
+              <% end %>
+            <% end %>
+
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
   <div data-action="click->document#close" class="me-3">
     <i class="fa-solid fa-xmark"></i>

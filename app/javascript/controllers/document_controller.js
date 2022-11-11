@@ -3,7 +3,7 @@ import { csrfToken } from "@rails/ujs"
 
 export default class extends Controller {
 
-  static targets = [ "insert", "new", "form", "insert", 'info', 'number', 'doc', "card" ]
+  static targets = [ "insert", "new", "form", "insert", 'info', 'number', 'doc', "card", , "insertAnalyse" ]
 
 
   connect() {
@@ -31,6 +31,7 @@ export default class extends Controller {
     .then((data)=>{
         this.insertTarget.innerHTML =""
         this.insertTarget.insertAdjacentHTML("beforeend", data.form)
+        this.insertTarget.insertAdjacentHTML("beforeend", data.analyse_form)
 
       })
   }
@@ -41,6 +42,7 @@ export default class extends Controller {
 
   send(event) {
     event.preventDefault()
+
     fetch(this.formTarget.action, {
       method: "POST",
       headers: { "Accept": "application/json", "X-CSRF-Token": csrfToken() },

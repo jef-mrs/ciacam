@@ -1,7 +1,8 @@
 class DocumentsController < ApplicationController
   def index
-    @supplier = Supplier.find(params[:supplier_id])
-    @supplier_documents = policy_scope(Document)
+    @supplier = Supplier.find(params[:supplier_id]) if params[:supplier_id]
+    @product = Product.find(params[:product_id]) if params[:product_id]
+    @documents = policy_scope(Document)
     @analyse_bios = policy_scope(AnalyseSuppDoc)
     respond_to do |format|
       format.html { render 'pages/buy' }
@@ -10,7 +11,8 @@ class DocumentsController < ApplicationController
   end
 
   def new
-    @supplier = Supplier.find(params[:supplier_id])
+    @product = Product.find(params[:product_id]) if params[:product_id]
+    @supplier = Supplier.find(params[:supplier_id]) if params[:supplier_id]
     @document = Document.new
     @analyse_doc = AnalyseSuppDoc.new
     authorize @document
@@ -21,9 +23,8 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    @supplier = Supplier.find(params[:supplier_id])
     @document = Document.create(document_params)
-    @document.supplier = @supplier
+    for_who
     @document.save
     authorize @document
     respond_to do |format|
@@ -36,5 +37,15 @@ class DocumentsController < ApplicationController
 
   def document_params
     params.require(:document).permit(:title, :validate_date, :supplier_id, :batch_id, :file)
+  end
+
+  def for_who
+    if params[:supplier_id]
+      @supplier = Supplier.find(params[:supplier_id])
+      @document.supplier = @supplier
+    elsif params[:product_id]
+      @product = Product.find(params[:product_id])
+      @document.product = @product
+    end
   end
 end

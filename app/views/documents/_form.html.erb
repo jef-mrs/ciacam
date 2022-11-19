@@ -1,24 +1,47 @@
-<div class="d-flex p-4">
-  <%= simple_form_for([supplier, document],
-                    data: {
-                  document_target: "form",
-                  action: "submit->document#send"
-                  },
-                  html: { class: 'flex-grow-1'}) do |f| %>
-
-      <% if params[:supplier_id] %>
+<% if params[:supplier_id] %>
+  <div class="d-flex p-4">
+    <%= simple_form_for([supplier, document],
+                      data: {
+                    document_target: "form",
+                    action: "submit->document#send"
+                    },
+                    html: { class: 'flex-grow-1'}) do |f| %>
         <%= f.hidden_field :supllier_id, value: supplier.id %>
         <%= f.input :title, collection: Document::SUPPLIER, label: false, input_html: {placeholder: 'type de document', data: { document_target: 'input'}, style:'width: 350px'}  %>
-      <% end %>
-      <%= f.input :file, as: :file,label: 'Selectionner le document', input_html: {class:'d-none', style: 'width: 300px'}, label_html: {class: 'btn btn-primary'} %>
-      <div class='mb-3'>
-        <%= f.date_field :validate_date, label: 'Date de fin de validité', order: [:day, :month, :year] %>
-      </div>
-      <%= f.button :submit, 'Enregistrer', class: 'btn btn-outline-primary', data: {
-                                                                disable_with: false
-                                                              } %>
-  <% end %>
-  <div data-action="click->document#close" class="me-3">
-    <i class="fa-solid fa-xmark"></i>
+        <%= f.input :file, as: :file,label: 'Selectionner le document', input_html: {class:'d-none', style: 'width: 300px'}, label_html: {class: 'btn btn-primary'} %>
+        <div class='mb-3'>
+          <%= f.date_field :validate_date, label: 'Date de fin de validité', order: [:day, :month, :year] %>
+        </div>
+        <%= f.button :submit, 'Enregistrer', class: 'btn btn-outline-primary', data: {
+                                                                  disable_with: false
+                                                                } %>
+    <% end %>
+    <div data-action="click->document#close" class="me-3">
+      <i class="fa-solid fa-xmark"></i>
+    </div>
   </div>
-</div>
+<% end %>
+
+<% if params[:product_id] %>
+  <div class="d-flex p-4">
+    <%= simple_form_for([product, document],
+                      data: {
+                    document_target: "form",
+                    action: "submit->document#send"
+                    },
+                    html: { class: 'flex-grow-1'}) do |f| %>
+        <%= f.hidden_field :supllier_id, value: product.id %>
+        <%= f.input :title, label: false, input_html: {placeholder: 'type de document', data: { document_target: 'input'}, style:'width: 350px'}  %>
+        <%= f.input :file, as: :file,label: 'Selectionner le document', input_html: {class:'d-none', style: 'width: 300px'}, label_html: {class: 'btn btn-primary'} %>
+        <div class='mb-3'>
+          <%= f.date_field :validate_date, label: 'Date de fin de validité', order: [:day, :month, :year] %>
+        </div>
+        <%= f.button :submit, 'Enregistrer', class: 'btn btn-outline-primary', data: {
+                                                                  disable_with: false
+                                                                } %>
+    <% end %>
+    <div data-action="click->document#close" class="me-3">
+      <i class="fa-solid fa-xmark"></i>
+    </div>
+  </div>
+<% end %>

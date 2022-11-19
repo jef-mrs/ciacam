@@ -31,8 +31,9 @@ export default class extends Controller {
     .then((data)=>{
         this.insertTarget.innerHTML =""
         this.insertTarget.insertAdjacentHTML("beforeend", data.form)
-        this.insertTarget.insertAdjacentHTML("beforeend", data.analyse_form)
-
+        if (data.analyse_form) {
+          this.insertTarget.insertAdjacentHTML("beforeend", data.analyse_form)
+        }
       })
   }
 

@@ -1,23 +1,21 @@
-<% if params[:supplier_id] %>
-  <h4>Analyse</h4>
-  <div class="d-flex p-4" data-controller='analyse'>
-    <%= simple_form_for([supplier, analyse_doc],
-                      data: {
-                    analyse_target: "form",
-                    action: "submit->analyse#send"
-                    },
-                    html: { class: 'flex-grow-1'}) do |f| %>
+<h4>Analyse</h4>
+<div class="d-flex p-4" data-controller='analyse'>
+  <%= simple_form_for([supplier, analyse_doc],
+                    data: {
+                  analyse_target: "form",
+                  action: "submit->analyse#send"
+                  },
+                  html: { class: 'flex-grow-1'}) do |f| %>
 
-        <%= f.hidden_field :supllier_id, value: supplier.id %>
-        <%= f.input :product_id, collection: Product.all, label: false, input_html: {placeholder: 'Produit', data: { analyse_target: 'input'}, style:'width: 350px'}  %>
-        <%= f.input :title, label: false, input_html: {placeholder: 'Nom du document', data: { analyse_target: 'input'}, style:'width: 350px'}  %>
-        <%= f.input :file, as: :file, label: 'Selectionner le document', input_html: {class:'d-none', style: 'width: 300px'}, label_html: {class: 'btn btn-primary'} %>
-        <div class='mb-3'>
-        </div>
-        <%= f.button :submit, 'Enregistrer', class: 'btn btn-outline-primary', data: {
-                                                                  disable_with: false
-                                                                } %>
-    <% end %>
-    <div data-analyse-target='insert'></div>
-  </div>
-<% end %>
+      <%= f.hidden_field :supllier_id, value: supplier.id %>
+      <%= f.input :product_id, collection: Product.all, label: false, input_html: {placeholder: 'Produit', data: { analyse_target: 'input'}, style:'width: 350px'}  %>
+      <%= f.input :title, label: false, input_html: {placeholder: 'Nom du document', data: { analyse_target: 'input'}, style:'width: 350px'}  %>
+      <%= f.input :file, as: :file, label: 'Selectionner le document', input_html: {class:'d-none', style: 'width: 300px'}, label_html: {class: 'btn btn-primary'} %>
+      <div class='mb-3'>
+      </div>
+      <%= f.button :submit, 'Enregistrer', class: 'btn btn-outline-primary', data: {
+                                                                disable_with: false
+                                                              } %>
+  <% end %>
+  <div data-analyse-target='insert'></div>
+</div>

@@ -8,11 +8,7 @@
 
       <% if params[:supplier_id] %>
         <%= f.hidden_field :supllier_id, value: supplier.id %>
-        <% if supplier.bio %>
-        <%= f.input :title, collection: Document::SUPPLIER_BIO, label: false, input_html: {placeholder: 'type de document', data: { document_target: 'input'}, style:'width: 350px'}  %>
-        <% else %>
         <%= f.input :title, collection: Document::SUPPLIER, label: false, input_html: {placeholder: 'type de document', data: { document_target: 'input'}, style:'width: 350px'}  %>
-        <% end %>
       <% end %>
       <%= f.input :file, as: :file,label: 'Selectionner le document', input_html: {class:'d-none', style: 'width: 300px'}, label_html: {class: 'btn btn-primary'} %>
       <div class='mb-3'>

@@ -1,7 +1,8 @@
 class DocumentsController < ApplicationController
   def index
-    @supplier_documents = policy_scope(Document).where(supplier_id: params[:supplier_id])
-    @analyse_bios = policy_scope(AnalyseSuppDoc).where(supplier_id: params[:supplier_id])
+    @supplier = Supplier.find(params[:supplier_id])
+    @supplier_documents = policy_scope(Document)
+    @analyse_bios = policy_scope(AnalyseSuppDoc)
     respond_to do |format|
       format.html { render 'pages/buy' }
       format.json # Follow the classic Rails flow and look for a index.json view

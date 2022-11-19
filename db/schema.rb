@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_09_091259) do
+ActiveRecord::Schema.define(version: 2022_11_19_112937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,7 +72,9 @@ ActiveRecord::Schema.define(version: 2022_11_09_091259) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "validate_date"
+    t.bigint "product_id"
     t.index ["batch_id"], name: "index_documents_on_batch_id"
+    t.index ["product_id"], name: "index_documents_on_product_id"
     t.index ["supplier_id"], name: "index_documents_on_supplier_id"
   end
 
@@ -119,6 +121,7 @@ ActiveRecord::Schema.define(version: 2022_11_09_091259) do
   add_foreign_key "batches", "products"
   add_foreign_key "batches", "suppliers"
   add_foreign_key "documents", "batches"
+  add_foreign_key "documents", "products"
   add_foreign_key "documents", "suppliers"
   add_foreign_key "loading_places", "suppliers"
 end

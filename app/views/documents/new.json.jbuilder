@@ -4,3 +4,5 @@ if params[:supplier_id]
 end
 
 json.form json.partial!('documents/form.html.erb', document: @document, product: @product) if params[:product_id]
+
+json.form json.partial!('documents/form.html.erb', document: @document, batch: @batch) if params[:batch_id]

@@ -1,6 +1,6 @@
 class BatchesController < ApplicationController
   def index
-    @batchs = policy_scope(Batch).sort_by { |e| -e.number}
+    @batchs = policy_scope(Batch).sort_by { |e| -e.number }
 
     respond_to do |format|
       format.html { render 'pages/buy' }

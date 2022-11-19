@@ -65,3 +65,29 @@
     </div>
   </div>
 <% end %>
+
+
+<% if params[:batch_id] %>
+  <div class="p-4 d-flex">
+    <div class='flex-grow-1'>
+      <% if batch.documents.count.positive? %>
+        <% documents.each do |document|  %>
+          <% if document.batch == batch %>
+            <div class="d-flex">
+              <p class="me-5"><%= document.title %></p>
+              <%= link_to cloudinary_url(document.file.key, :flag=>"attachment"), download: "#{document.title} - #{document.batch.number}", style: 'color:black; text-decoration:none', class: 'me-5', target: :_blank do %>
+                <i class="fa-solid fa-download"></i>
+              <% end %>
+              <p>Valide jusqu'au <%= document.validate_date.strftime('%d-%m-%Y') %></p>
+            </div>
+          <% end %>
+        <% end %>
+      <% else %>
+        <p>Il n'y a aucun document associé</p>
+      <% end %>
+    </div>
+    <div data-action="click->document#close" class="me-3">
+      <i class="fa-solid fa-xmark"></i>
+    </div>
+  </div>
+<% end %>

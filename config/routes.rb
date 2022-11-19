@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     resources :documents, only: %i[new index create]
     resources :analyse_supp_docs, only: %i[create index]
   end
-  resources :batches, only: %i[index create edit update]
+  resources :batches, only: %i[index create edit update] do
+    resources :documents, only: %i[new index create]
+  end
   resources :products, only: %i[index create edit update] do
     resources :documents, only: %i[new index create]
   end

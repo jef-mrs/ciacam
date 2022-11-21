@@ -57,9 +57,6 @@
         <%= f.hidden_field :batch_id, value: batch.id %>
         <%= f.input :title, label: false, input_html: {placeholder: 'type de document', data: { document_target: 'input'}, style:'width: 350px'}  %>
         <%= f.input :file, as: :file,label: 'Selectionner le document', input_html: {class:'d-none', style: 'width: 300px'}, label_html: {class: 'btn btn-primary'} %>
-        <div class='mb-3'>
-          <%= f.date_field :validate_date, label: 'Date de fin de validité', order: [:day, :month, :year] %>
-        </div>
         <%= f.button :submit, 'Enregistrer', class: 'btn btn-outline-primary', data: {
                                                                   disable_with: false
                                                                 } %>

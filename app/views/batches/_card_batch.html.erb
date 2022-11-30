@@ -17,8 +17,10 @@
                 <p><%= batch.quantity %></p>
                 <% if batch.transportation == 1 %>
                   <p> Route </p>
+                  <p> Usine de déchargement <%= batch.discharge_place %></p>
                 <% elsif batch.transportation == 2 %>
                   <p> Maritime </p>
+                  <p> Port de déchargement <%= batch.discharge_place %></p>
                 <% end %>
               </div>
               <div class="card-batch-edit" >

@@ -2,7 +2,7 @@
   <ul class="nav nav-tabs" id="myTab" role="tablist">
   <% case params['action'] %>
   <% when 'buy' %>
-    <li class="nav-item" style='width:200px'>
+    <li class="nav-item" >
       <%= link_to batches_path, class: 'nav-link', data: {bs_toggle: 'tab',
                                                   bs_target: '#batch',
                                                   content_target: 'batch',
@@ -11,7 +11,7 @@
         <%= 'Lots' %>
       <% end %>
     </li>
-    <li class="nav-item" style='width:200px' >
+    <li class="nav-item">
       <%= link_to suppliers_path, class: 'nav-link', data: {bs_toggle: 'tab',
                                                             bs_target: '#supllier',
                                                             content_target: 'supplier',
@@ -19,7 +19,7 @@
         <%= 'Fournisseurs' %>
       <% end %>
     </li>
-    <li class="nav-item" style='width:200px' >
+    <li class="nav-item">
       <%= link_to products_path, class: 'nav-link', data: {bs_toggle: 'tab',
                                                  bs_target: '#product',
                                                  content_target: 'product',
@@ -28,44 +28,44 @@
       <% end %>
     </li>
   <% when 'quality' %>
-    <li class="nav-item" style='width:200px'>
+    <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#lot" type="button" role="tab" aria-controls="lot" aria-selected="true">
         <%= 'Analyse' %>
       </a>
     </li>
-    <li class="nav-item" style='width:200px'>
+    <li class="nav-item" >
       <a class="nav-link" aria-current="page" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#lot" type="button" role="tab" aria-controls="lot" aria-selected="false">
         <%= 'Certificats à renouveller' %>
       </a>
     </li>
-    <li class="nav-item" style='width:200px'>
+    <li class="nav-item">
       <a class="nav-link" aria-current="page" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#lot" type="button" role="tab" aria-controls="lot" aria-selected="false">
         <%= 'Cahier des charges' %>
       </a>
     </li>
-    <li class="nav-item" style='width:200px'>
+    <li class="nav-item">
       <a class="nav-link" aria-current="page" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#lot" type="button" role="tab" aria-controls="lot" aria-selected="false">
         <%= 'Document qualité' %>
       </a>
     </li>
   <% when 'sale' %>
-    <li class="nav-item" style='width:200px'>
+    <li class="nav-item" >
       <a class="nav-link active" aria-current="page" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#batch" type="button" role="tab" aria-controls="lot" aria-selected="true">
         <%= 'Commandes clients' %>
       </a>
     </li>
-    <li class="nav-item" style='width:200px'>
+    <li class="nav-item" >
       <a class="nav-link" aria-current="page" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#supplier" type="button" role="tab" aria-controls="lot" aria-selected="false">
         <%= 'Refus' %>
       </a>
     </li>
       <% when 'transport' %>
-    <li class="nav-item" style='width:200px'>
+    <li class="nav-item" >
       <a class="nav-link active" aria-current="page" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#product" type="button" role="tab" aria-controls="lot" aria-selected="true">
         <%= 'Transports en cours' %>
       </a>
     </li>
-    <li class="nav-item" style='width:200px'>
+    <li class="nav-item" >
       <a class="nav-link" aria-current="page" href="#" id="home-tab" data-bs-toggle="tab" data-bs-target="#lot" type="button" role="tab" aria-controls="lot" aria-selected="false">
         <%= 'Transports chargés' %>
       </a>

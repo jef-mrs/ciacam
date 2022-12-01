@@ -6,14 +6,14 @@
 
 .card-batch {
   overflow: hidden;
-  height: 400px;
+  // height: 400px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   align-items: center;
 }
 
 .card-batch img {
-  height: 35%;
+  height: 120px;
   width: 100%;
   object-fit: cover;
 }

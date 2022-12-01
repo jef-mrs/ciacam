@@ -12,16 +12,23 @@
               <% end %>
               <h2 data-info-target='number' class='mt-1 ms-2'>Lot : <%= batch.number %></h2>
               <div data-info-target='info' class="card-batch-infos">
-                <p><strong><%= batch.supplier.name %></strong></p>
-                <p><%= batch.product.name %></p>
-                <p><%= batch.quantity %> T</p>
-                <% if batch.transportation == 1 %>
-                  <p> Route </p>
-                  <p> Usine de déchargement <%= batch.discharge_place %></p>
-                <% elsif batch.transportation == 2 %>
-                  <p> Maritime </p>
-                  <p> Port de déchargement <%= batch.discharge_place %></p>
-                <% end %>
+                <div>
+                  <p><strong><%= batch.supplier.name %></strong></p>
+                  <p><%= batch.product.name %></p>
+                  <p><%= batch.quantity %> T</p>
+                  <% if batch.transportation == 1 %>
+                    <p> Route </p>
+                    <p> Usine de déchargement <%= batch.discharge_place %></p>
+                  <% elsif batch.transportation == 2 %>
+                    <p> Maritime </p>
+                    <p> Port de déchargement <%= batch.discharge_place %></p>
+                  <% end %>
+                </div>
+                <div>
+                  <% if batch.transportation == 2 %>
+                    <p><%= batch.bank ? "Banque : #{batch.bank}" : "Aucune banque associé"  %></p>
+                  <% end %>
+                </div>
               </div>
               <div class="card-batch-edit" >
                 <%= link_to edit_batch_path(batch), class: 'me-4', data: {

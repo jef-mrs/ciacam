@@ -19,10 +19,10 @@
 
 
               <%= simple_form_for(batch,
-                          data: {
-                            create_target: "form",
-                            action: "submit->create#send"
-                            }) do |f| %>
+                      data: {
+                        info_target: "form",
+                        action: "submit->info#send"
+                        }) do |f| %>
                 <%= f.input :number, label: false, input_html: {placeholder: 'Numero de lot', data: { create_target: 'input'}}  %>
                 <%= f.input :quantity, label: false, input_html: {placeholder: 'Quantité en tonne', data: { create_target: 'input'}}  %>
                 <%= f.input :supplier_id, collection: Supplier.all, label: false, input_html: {placeholder: 'Fournisseur', data: { create_target: 'input'}} %>
@@ -30,11 +30,14 @@
                 <div class='mb-2'>
                   <%= f.collection_radio_buttons :transportation, [[1, 'Route'], [2, 'Maritime']], :first, :last,  item_label_class:'px-2 ' %>
                 </div>
-                <%= f.button :submit, 'Créer', class: 'btn btn-outline-primary', data: {
+                <%= f.input :discharge_place, label: false, input_html: {placeholder: 'Lieu de déchargement'} %>
+                <% if batch.transportation == 2 %>
+                  <%= f.input :bank, label: false, input_html: {placeholder: 'Banque'} %>
+                <% end %>
+                <%= f.button :submit, 'Mettre à jour', class: 'btn btn-outline-primary', data: {
                                                                           disable_with: false,
-                                                                          bs_dismiss:'modal'
                                                                         } %>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
               <% end %>
 
             </div>

@@ -12,6 +12,9 @@
       <%= f.collection_radio_buttons :transportation, [[1, 'Route'], [2, 'Maritime']], :first, :last,  item_label_class:'px-2 ' %>
     </div>
     <%= f.input :discharge_place, label: false, input_html: {placeholder: 'Lieu de déchargement'} %>
+    <% if batch.transportation == 2 %>
+      <%= f.input :bank, label: false, input_html: {placeholder: 'Banque'} %>
+    <% end %>
     <%= f.button :submit, 'Mettre à jour', class: 'btn btn-outline-primary', data: {
                                                               disable_with: false,
                                                             } %>

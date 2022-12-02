@@ -27,7 +27,22 @@
                   </div>
                   <div>
                     <% if batch.transportation == 2 %>
-                      <p><%= batch.bank ? "Banque : #{batch.bank}" : "Aucune banque associé"  %></p>
+                      <p><%= batch.bank && batch.bank != "" ? "Banque : #{batch.bank}" : "Aucune banque associé"  %></p>
+                      <% if batch.status %>
+                        <% case batch.status %>
+                        <% when 1 %>
+                          <p> Doc en banque</p>
+                        <% when 2 %>
+                          <p> Payé</p>
+                        <% when 3 %>
+                          <p> Docs envoyé par la banque </p>
+                        <% when 4 %>
+                          <p> Docs originaux reçu</p>
+                        <% when 5%>
+                          <p> Bl envoyé ou déposé à la compagnie</p>
+                        <% else %><p> En attente </p>
+                        <% end %>
+                      <% end %>
                     <% end %>
                   </div>
                 </div>

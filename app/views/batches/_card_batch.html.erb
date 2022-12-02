@@ -3,58 +3,68 @@
     <% batchs.each do |batch| %>
       <div data-controller='info' >
         <div data-controller="document" >
-          <div data-document-target="card">
-            <div class="card-batch mt-5">
-              <% if batch.product.photo.attached? %>
-                <%= cl_image_tag batch.product.photo.key, height: 300, width: 400, crop: :fill %>
-              <% else %>
-                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-              <% end %>
-              <h2 data-info-target='number' class='mt-1 ms-2'>Lot : <%= batch.number %></h2>
-              <div data-info-target='info' class="card-batch-infos">
-                <div>
-                  <p><strong><%= batch.supplier.name %></strong></p>
-                  <p><%= batch.product.name %></p>
-                  <p><%= batch.quantity %> T</p>
-                  <% if batch.transportation == 1 %>
-                    <p> Route </p>
-                    <p> Usine de déchargement <%= batch.discharge_place %></p>
-                  <% elsif batch.transportation == 2 %>
-                    <p> Maritime </p>
-                    <p> Port de déchargement <%= batch.discharge_place %></p>
-                  <% end %>
+          <div data-controller="index-batch-doc">
+            <div data-document-target="card">
+              <div class="card-batch mt-5">
+                <% if batch.product.photo.attached? %>
+                  <%= cl_image_tag batch.product.photo.key, height: 300, width: 400, crop: :fill %>
+                <% else %>
+                  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+                <% end %>
+                <h2 data-info-target='number' class='mt-1 ms-2'>Lot : <%= batch.number %></h2>
+                <div data-info-target='info' class="card-batch-infos">
+                  <div>
+                    <p><strong><%= batch.supplier.name %></strong></p>
+                    <p><%= batch.product.name %></p>
+                    <p><%= batch.quantity %> T</p>
+                    <% if batch.transportation == 1 %>
+                      <p> Route </p>
+                      <p> Usine de déchargement <%= batch.discharge_place %></p>
+                    <% elsif batch.transportation == 2 %>
+                      <p> Maritime </p>
+                      <p> Port de déchargement <%= batch.discharge_place %></p>
+                    <% end %>
+                  </div>
+                  <div>
+                    <% if batch.transportation == 2 %>
+                      <p><%= batch.bank ? "Banque : #{batch.bank}" : "Aucune banque associé"  %></p>
+                    <% end %>
+                  </div>
                 </div>
-                <div>
-                  <% if batch.transportation == 2 %>
-                    <p><%= batch.bank ? "Banque : #{batch.bank}" : "Aucune banque associé"  %></p>
-                  <% end %>
-                </div>
-              </div>
-              <div class="card-batch-edit" >
-                <%= link_to edit_batch_path(batch), class: 'me-4', data: {
-                                                    info_target: "model",
+                <div class="card-batch-edit" >
+                  <%= link_to edit_batch_path(batch), class: 'me-4', data: {
+                                                      info_target: "model",
 
-                                                    action:"click->info#info"
-                                                  },
-                                                  style: 'text-decoration: none; color: black' do %>
-                  <i class="fa-solid fa-pen-to-square"></i>
-                <% end %>
-                <%= link_to batch_documents_path(batch), class: 'me-4', data: {
-                                            document_target: 'doc',
-                                            action: 'click->document#info'
-                                            },
-                                            style: 'text-decoration: none; color: black' do  %>
-                  <i class="fa-regular fa-file-lines"></i>
-                <% end %>
-                <%= link_to new_batch_document_path(batch), class: 'me-4', data: {
-                                        document_target: 'new',
-                                        action: 'click->document#new'
-                                        }, style: 'text-decoration: none; color: black' do   %>
-                  <i class="fa-solid fa-folder-plus"></i>
-                <% end %>
+                                                      action:"click->info#info"
+                                                    },
+                                                    style: 'text-decoration: none; color: black' do %>
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  <% end %>
+                  <%= link_to batch_documents_path(batch), class: 'me-4', data: {
+                                              document_target: 'doc',
+                                              action: 'click->document#info'
+                                              },
+                                              style: 'text-decoration: none; color: black' do  %>
+                    <i class="fa-regular fa-file-lines"></i>
+                  <% end %>
+                  <%= link_to new_batch_document_path(batch), class: 'me-4', data: {
+                                          document_target: 'new',
+                                          action: 'click->document#new'
+                                          }, style: 'text-decoration: none; color: black' do   %>
+                    <i class="fa-solid fa-folder-plus"></i>
+                  <% end %>
+                  <% if batch.transportation == 2 %>
+                    <%= link_to batch_batch_docs_path(batch), class: 'me-4', data: {
+                                              index_batch_doc_target: 'new',
+                                              action: 'click->index-batch-doc#new'
+                                              }, style: 'text-decoration: none; color: black' do   %>
+                      <i class="fa-solid fa-list"></i>
+                    <% end %>
+                  <% end %>
+                </div>
               </div>
+              <div data-info-target='insert' data-document-target='insert' data-index-batch-doc-target='insert' style='background:white'></div>
             </div>
-            <div data-info-target='insert' data-document-target='insert' style='background:white'></div>
           </div>
         </div>
       </div>

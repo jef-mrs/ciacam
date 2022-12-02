@@ -3,11 +3,19 @@ import { csrfToken } from "@rails/ujs"
 
 export default class extends Controller {
 
-  static targets = [ "form", "insert", "index", "input"]
+  static targets = ["new", "insert", "form", 'inserted', "edit"]
 
 
-  connect() {
-    // console.log(this.formTarget.action)
+  new(event) {
+    event.preventDefault()
+    fetch(this.newTarget, {
+      headers: { "Accept": "application/json", "X-CSRF-Token": csrfToken() }
+    })
+    .then(response => response.json())
+    .then((data)=>{
+        this.insertTarget.innerHTML =""
+        this.insertTarget.insertAdjacentHTML("beforeend", data.form)
+      })
   }
 
   send(event) {
@@ -21,11 +29,13 @@ export default class extends Controller {
       .then((data) => {
         this.insertTarget.innerHTML = ""
         if (data.error) {
+          this.insertTarget.innerHTML = ""
           this.insertTarget.innerHTML = data.error
         } else {
-          this.insertTarget.innerHTML =data.inserted_item
+          this.insertTarget.innerHTML = ""
+          this.insertTarget.innerHTML = data.inserted_item
+
         }
-        this.inputTargets.forEach( (e) => e.value = "")
         }
       )
   }

@@ -1,0 +1,18 @@
+<div data-action="click->info#close" class='text-end'>
+  <i class="fa-solid fa-xmark"></i>
+</div>
+<div>
+  <%= simple_form_for(doc,
+                      data: {
+                        edit_batch_doc_target: "form",
+                        action: "submit->edit-batch-doc#send"
+                        })do |f| %>
+
+    <%= f.collection_radio_buttons :status, [[1, 'Supprimer'], [2, 'Non reçu'], [3, 'Reçu'], [4, 'Reçu NC']], :first, :last,  item_label_class:'px-2 me-3'  %>
+
+    <%= f.button :submit, 'Mettre à jour', class: 'btn btn-outline-primary', data: {
+                                                              disable_with: false,
+                                                            } %>
+
+  <% end %>
+</div>

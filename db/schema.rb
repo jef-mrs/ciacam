@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_30_183002) do
+ActiveRecord::Schema.define(version: 2022_12_01_105324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 2022_11_30_183002) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["product_id"], name: "index_analyse_supp_docs_on_product_id"
     t.index ["supplier_id"], name: "index_analyse_supp_docs_on_supplier_id"
+  end
+
+  create_table "batch_docs", force: :cascade do |t|
+    t.string "title"
+    t.integer "status"
+    t.bigint "batch_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["batch_id"], name: "index_batch_docs_on_batch_id"
   end
 
   create_table "batches", force: :cascade do |t|
@@ -120,6 +129,7 @@ ActiveRecord::Schema.define(version: 2022_11_30_183002) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "analyse_supp_docs", "products"
   add_foreign_key "analyse_supp_docs", "suppliers"
+  add_foreign_key "batch_docs", "batches"
   add_foreign_key "batches", "products"
   add_foreign_key "batches", "suppliers"
   add_foreign_key "documents", "batches"

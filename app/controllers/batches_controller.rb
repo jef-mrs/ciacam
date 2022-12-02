@@ -44,4 +44,5 @@ class BatchesController < ApplicationController
     params.require(:batch).permit(:number, :quantity, :transportation, :product_id, :supplier_id, :discharge_place,
                                   :bank)
   end
+
 end

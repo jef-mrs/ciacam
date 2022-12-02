@@ -7,10 +7,13 @@ Rails.application.routes.draw do
   end
   resources :batches, only: %i[index create edit update] do
     resources :documents, only: %i[new index create]
+    resources :batch_docs, only: :index
   end
   resources :products, only: %i[index create edit update] do
     resources :documents, only: %i[new index create]
   end
+  resources :batch_docs, only: %i[edit update]
+
   get 'buy', to: 'pages#buy', as: 'buy'
   get 'quality', to: 'pages#quality', as: 'quality'
   get 'sale', to: 'pages#sale', as: 'sale'

@@ -1,0 +1,62 @@
+<div class="p-3">
+  <div data-action="click->info#close" class='text-end'>
+    <i class="fa-solid fa-xmark"></i>
+  </div>
+  <div>
+    <% batch_docs.each do |doc| %>
+        <% case doc.status %>
+        <% when 1 %>
+          <div style= "display:none">
+            <p><%= doc.title  %></p>
+            <p> supprimer</p>
+          </div>
+        <% when 2 %>
+           <div data-controller="edit-batch-doc">
+            <div class='d-flex justify-content-between' style='color:gray'>
+              <p style="width:100px"><%= doc.title  %></p>
+              <p class='flex-grow-1 text-center'> Non Reçu </p>
+              <%= link_to edit_batch_doc_path(doc), class: 'me-4', data: {
+                                        edit_batch_doc_target: 'edit',
+                                        action: 'click->edit-batch-doc#edit'
+                                        }, style: 'text-decoration: none; color: black' do   %>
+                <i class="fa-solid fa-pen"></i>
+              <% end %>
+            </div>
+            <div data-edit-batch-doc-target='inserted'></div>
+            <hr>
+          </div>
+        <% when 3 %>
+          <div data-controller="edit-batch-doc">
+            <div class='d-flex justify-content-between'>
+              <p style="width:100px"><%= doc.title  %></p>
+              <p class='flex-grow-1 text-center'> Reçu </p>
+              <%= link_to edit_batch_doc_path(doc), class: 'me-4', data: {
+                                        edit_batch_doc_target: 'edit',
+                                        action: 'click->edit-batch-doc#edit'
+                                        }, style: 'text-decoration: none; color: black' do   %>
+                <i class="fa-solid fa-pen"></i>
+              <% end %>
+            </div>
+            <div data-edit-batch-doc-target='inserted'></div>
+            <hr>
+          </div>
+        <% when 4 %>
+          <div data-controller="edit-batch-doc">
+            <div class='d-flex'>
+              <p style="width:100px"><%= doc.title  %></p>
+              <p class='flex-grow-1 text-center'>  Reçu NC </p>
+              <%= link_to edit_batch_doc_path(doc), class: 'me-4', data: {
+                                        edit_batch_doc_target: 'edit',
+                                        action: 'click->edit-batch-doc#edit'
+                                        }, style: 'text-decoration: none; color: black' do   %>
+                <i class="fa-solid fa-pen"></i>
+              <% end %>
+            </div>
+            <div data-edit-batch-doc-target='inserted'></div>
+            <hr>
+          </div>
+        <% end %>
+    <% end %>
+  </div>
+
+</div>

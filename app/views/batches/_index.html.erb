@@ -27,6 +27,7 @@
                 <%= f.input :quantity, label: false, input_html: {placeholder: 'Quantité en tonne', data: { create_target: 'input'}}  %>
                 <%= f.input :supplier_id, collection: Supplier.all, label: false, input_html: {placeholder: 'Fournisseur', data: { create_target: 'input'}} %>
                 <%= f.input :product_id, collection: Product.all, label: false, input_html: {placeholder: 'Produit', data: { create_target: 'input'}} %>
+                <%= f.input :origin, label: false, input_html: {placeholder: 'Origine', data: { create_target: 'input'}} %>
                 <div class='mb-2'>
                   <%= f.collection_radio_buttons :transportation, [[1, 'Route'], [2, 'Maritime']], :first, :last,  item_label_class:'px-2 ' %>
                 </div>

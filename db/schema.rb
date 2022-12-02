@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_01_105324) do
+ActiveRecord::Schema.define(version: 2022_12_02_111221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2022_12_01_105324) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "discharge_place"
     t.string "bank"
+    t.integer "status"
     t.index ["product_id"], name: "index_batches_on_product_id"
     t.index ["supplier_id"], name: "index_batches_on_supplier_id"
   end

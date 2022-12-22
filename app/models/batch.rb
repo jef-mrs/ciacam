@@ -10,7 +10,8 @@ class Batch < ApplicationRecord
     create_batch_doc if transportation == 2
   end
 
-  STATUS = [[1, "Doc en banque"],
+  STATUS = [[0, "Copie reçu"],
+            [1, "Doc en banque"],
             [2, "Payé"],
             [3, "Docs envoyé par la banque"],
             [4, "Docs originaux reçu"],

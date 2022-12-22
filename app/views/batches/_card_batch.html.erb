@@ -31,6 +31,8 @@
                       <p><%= batch.bank && batch.bank != "" ? "Banque : #{batch.bank}" : "Aucune banque associé"  %></p>
                       <% if batch.status %>
                         <% case batch.status %>
+                        <% when 0 %>
+                          <p> Copie reçu</p>
                         <% when 1 %>
                           <p> Doc en banque</p>
                         <% when 2 %>

@@ -1,7 +1,7 @@
 class Supplier < ApplicationRecord
-  has_many :batches
-  has_many :Loading_place
-  has_many :documents
-  has_many :analyse_supp_docs
-  validates :name, :contact, presence: true
+  has_many :batches, dependent: :destroy
+  has_many :Loading_place, dependent: :destroy
+  has_many :documents, dependent: :destroy
+  has_many :analyse_supp_docs, dependent: :destroy
+  validates :name, presence: true
 end

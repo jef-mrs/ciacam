@@ -1,6 +1,6 @@
 class SuppliersController < ApplicationController
   def index
-    @suppliers = policy_scope(Supplier).sort_by { |e| e.name}
+    @suppliers = policy_scope(Supplier).sort_by { |e| e.name }
     # @suppliers = @suppliers.sort_by { |e| e.name}
     respond_to do |format|
       format.html { render 'pages/buy' }

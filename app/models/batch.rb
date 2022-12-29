@@ -3,6 +3,7 @@ class Batch < ApplicationRecord
   belongs_to :product
   has_many :documents, dependent: :destroy
   has_many :batch_docs, dependent: :destroy
+  has_rich_text :rich_info
 
   validates :number, presence: true
 

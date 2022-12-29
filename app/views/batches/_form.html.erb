@@ -14,10 +14,11 @@
     </div>
     <%= f.input :discharge_place, label: false, input_html: {placeholder: 'Lieu de déchargement'} %>
     <% if batch.transportation == 2 %>
+      <%= f.rich_text_area :rich_info %>
       <%= f.input :bank, label: false, input_html: {placeholder: 'Banque'} %>
       <%= f.collection_radio_buttons :status, Batch::STATUS, :first, :last, item_wrapper_tag: :div, item_label_class:'mx-1' %>
     <% end %>
-    <%= f.button :submit, 'Mettre à jour', class: 'btn btn-outline-primary', data: {
+    <%= f.button :submit, 'Valider', class: 'btn btn-outline-primary', data: {
                                                               disable_with: false,
                                                             } %>
 

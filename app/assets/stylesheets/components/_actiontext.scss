@@ -39,9 +39,8 @@
 
 }
 
-#trix-toolbar-1{
+#trix-toolbar{
   .trix-button-group--block-tools {
-
-    display: none;
+    display: none !important;
   }
 }
